@@ -1,32 +1,86 @@
 <?php
 if(isset($_POST['btn_add'])){
-    $ddl_resident = $_POST['ddl_resident'];
-    $txt_busname = $_POST['txt_busname'];
-    $txt_busadd = $_POST['txt_busadd'];
-    $ddl_tob = $_POST['ddl_tob'];
-    $txt_ornum = $_POST['txt_ornum'];
-    $txt_amount = $_POST['txt_amount'];
+
+
+    // $txt_familyName = $_POST['txt_familyName'];
+    // $txt_firstName = $_POST['txt_firstName'];
+    // $txt_middleInitial = $_POST['txt_middleInitial'] ;
+    $txt_cname = $_POST['txt_cname'] ;
+    $txt_id = explode(",", $txt_cname);
+    $txt_address = $_POST['txt_address'] ;
+    $txt_birthplace = $_POST['txt_birthplace'];
+    $txt_gender = $_POST['txt_gender'];
+    $txt_birthday = $_POST['txt_birthday'];
+    $txt_civilStatus = $_POST['txt_civilStatus'];
+    $txt_height = $_POST['txt_height'];
+    $txt_weight = $_POST['txt_weight'];
+    $txt_employmentStatus = $_POST['txt_employmentStatus'];
+    $txt_occupation = $_POST['txt_occupation'];
+    $txt_monthlyIncome = $_POST['txt_monthlyIncome'];
+
+
+    // $ddl_resident = $_POST['ddl_resident'];
+    // $txt_busname = $_POST['txt_busname'];
+    // $txt_busadd = $_POST['txt_busadd'];
+    // $ddl_tob = $_POST['ddl_tob'];
+    // $txt_ornum = $_POST['txt_ornum'];
+    // $txt_amount = $_POST['txt_amount'];
     $date = date('Y-m-d H:i:s');
 
     if(isset($_SESSION['role'])){
-        $action = 'Added Permit with business name of '.$txt_busname;
+        $action = 'Added cedula with name of '.$txt_cname;
         $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) values ('".$_SESSION['role']."', NOW(), '".$action."')");
     }
 
     if($_SESSION['role'] == "Administrator")
     {
-    $query = mysqli_query($con,"INSERT INTO tblpermit (residentid,businessName,businessAddress,typeOfBusiness,orNo,samount,dateRecorded,recordedBy,status) 
-        values ('$ddl_resident', '$txt_busname', '$txt_busadd', '$ddl_tob', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['username']."','Approved')") or die('Error: ' . mysqli_error($con));
+        $query = mysqli_query($con,"INSERT INTO tblcedula (
+            ResidentId,Address,Birthplace,Gender,Birthday,CivilStatus,Height, Weight,EmploymentStatus, Occupation, MonthlyIncome,DateCreated 
+        ) 
+        values (
+            '$txt_id[0]',  
+            '$txt_address', 
+            '$txt_birthplace', 
+            '$txt_gender', 
+            '$txt_birthday', 
+            '$txt_civilStatus', 
+            '$txt_height', 
+            '$txt_weight', 
+            '$txt_employmentStatus', 
+            '$txt_occupation', 
+            '$txt_monthlyIncome',
+            '$date')"
+        ) or die('Error: ' . mysqli_error($con));
     }
-    else
-    {
-      $query = mysqli_query($con,"INSERT INTO tblpermit (residentid,businessName,businessAddress,typeOfBusiness,orNo,samount,dateRecorded,recordedBy,status) 
-        values ('$ddl_resident', '$txt_busname', '$txt_busadd', '$ddl_tob', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['username']."','New')") or die('Error: ' . mysqli_error($con));
-    }
+    // else
+    // {
+    //     $query = mysqli_query($con,"INSERT INTO tblpermit (residentid,businessName,businessAddress,typeOfBusiness,orNo,samount,dateRecorded,recordedBy,status) 
+    //     values ('$ddl_resident', '$txt_busname', '$txt_busadd', '$ddl_tob', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['username']."','New')") or die('Error: ' . mysqli_error($con));
+    // }
     if($query == true)
     {
         $_SESSION['added'] = 1;
         header ("location: ".$_SERVER['REQUEST_URI']);
+    }   
+}
+
+if(isset($_POST['btn_findName'])){
+
+    $txt_lname = $_POST['txt_familyName'];
+    $txt_fname = $_POST['txt_firstName'];
+    $txt_mname = $_POST['txt_middleInitial'] ;
+
+    $reqquery = mysqli_query($con,"SELECT * from tblresident WHERE fname='".$txt_fname."' and lname ='".$txt_lname."'  and mname= '" .$txt_mname ) or die('Error: ' . mysqli_error($con));
+
+    if($reqquery == true)
+    {
+        echo ("
+            <script>
+            console.log('asdf')
+            </script>
+        
+        ");
+        // header ("location: ".$_SERVER['REQUEST_URI']);
     }   
 }
 

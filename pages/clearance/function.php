@@ -1,30 +1,83 @@
 <?php
 if(isset($_POST['btn_add'])){
-    $txt_cnum = $_POST['txt_cnum'];
     $ddl_resident = $_POST['ddl_resident'];
-    $txt_findings = $_POST['txt_findings'];
+    $txt_address = $_POST['txt_address'];
+    $txt_birthdate = $_POST['txt_birthdate'];
+    $txt_age = $_POST['txt_age'];
+    $txt_bloodType = $_POST['txt_bloodType'];
+    $txt_contactNumber = $_POST['txt_contactNumber'];
+    $txt_birthPlace = $_POST['txt_birthPlace'];
+    $txt_civilStatus = $_POST['txt_civilStatus'];
+    $txt_years = $_POST['txt_years'];
+    $txt_email = $_POST['txt_email'];
+    $txt_for = $_POST['txt_for'];
     $txt_purpose = $_POST['txt_purpose'];
-    $txt_ornum = $_POST['txt_ornum'];
-    $txt_amount = $_POST['txt_amount'];
+    $txt_others = $_POST['txt_others'];
+    $txt_remarks = $_POST['txt_remarks'];
+    $txt_indigencyApproved = $_POST['txt_indigencyApproved'];
+    $txt_luponApproved = $_POST['txt_luponApproved'];
     $date = date('Y-m-d');
 
-    $chkdup = mysqli_query($con,"SELECT * from tblclearance where clearanceNo = ".$txt_cnum." ");
-    $num_rows = mysqli_num_rows($chkdup);
+//     // $chkdup = mysqli_query($con,"SELECT * from tblclearance where clearanceNo = ".$txt_cnum." ");
+//     // $num_rows = mysqli_num_rows($chkdup);
+
+    $num_rows = 0;
 
     if(isset($_SESSION['role'])){
-        $action = 'Added Clearance with clearance number of '.$txt_cnum;
+        $action = 'Added Clearance with clearance for '.$ddl_resident;
         $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) values ('".$_SESSION['role']."', NOW(), '".$action."')");
     }
 
     if($num_rows == 0){
-        if($_SESSION['role'] == "Administrator"){
-        $query = mysqli_query($con,"INSERT INTO tblclearance (clearanceNo,residentid,findings,purpose,orNo,samount,dateRecorded,recordedBy,status) 
-            values ('$txt_cnum','$ddl_resident', '$txt_findings','$txt_purpose', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['username']."','Approved')") or die('Error: ' . mysqli_error($con));
-        }
-        else{
-        $query = mysqli_query($con,"INSERT INTO tblclearance (clearanceNo,residentid,findings,purpose,orNo,samount,dateRecorded,recordedBy,status) 
-            values ('$txt_cnum','$ddl_resident', '$txt_findings','$txt_purpose', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['username']."','New')") or die('Error: ' . mysqli_error($con));
-        }
+        $query = mysqli_query($con,"INSERT INTO tblclearance2 (
+            ResidentId,
+            Address,
+            Birthdate,
+            Age,
+            BloodType,
+            ContactNumber,
+            BirthPlace,
+            CivilStatus,
+            YearsKauswagan,
+            Email,
+            ForPurpose,
+            Purpose,
+            Others,
+            Remarks,
+            IndigencyApproved,
+            LuponApproval,
+            dateCreated
+        ) 
+        values (
+            '$ddl_resident',
+            '$txt_address',
+            '$txt_birthdate',
+            '$txt_age',
+            '$txt_bloodType',
+            '$txt_contactNumber',
+            '$txt_birthPlace',
+            '$txt_civilStatus',
+            '$txt_years',
+            '$txt_email',
+            '$txt_for',
+            '$txt_purpose',
+            '$txt_others',
+            '$txt_remarks',
+            '$txt_indigencyApproved',
+            '$txt_luponApproved', 
+            '$date' 
+        )"
+            
+        ) or die('Error: ' . mysqli_error($con));
+    
+        // if($_SESSION['role'] == "Administrator"){
+        //     $query = mysqli_query($con,"INSERT INTO tblclearance2 (clearanceNo,residentid,findings,purpose,orNo,samount,dateRecorded,recordedBy,status) 
+        //     values ('$txt_cnum','$ddl_resident', '$txt_findings','$txt_purpose', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['username']."','Approved')") or die('Error: ' . mysqli_error($con));
+        // }
+        // else{
+        //     $query = mysqli_query($con,"INSERT INTO tblclearance2 (clearanceNo,residentid,findings,purpose,orNo,samount,dateRecorded,recordedBy,status) 
+        //     values ('$txt_cnum','$ddl_resident', '$txt_findings','$txt_purpose', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['username']."','New')") or die('Error: ' . mysqli_error($con));
+        // }
         if($query == true)
         {
             $_SESSION['added'] = 1;

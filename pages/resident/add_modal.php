@@ -127,11 +127,7 @@
                                         <input name="txt_remarks" class="form-control input-sm input-size" type="text" placeholder="Remarks"/>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="control-label">Username:</label>
-                                        <input name="txt_uname" id="username" class="form-control input-sm input-size" type="text" placeholder="Username"/>
-                                        <label id="user_msg" style="color:#CC0000;" ></label>
-                                    </div>
+        
 
                                 </div>
 
@@ -229,10 +225,6 @@
                                     </div>
 
                                     
-                                    <div class="form-group">
-                                        <label class="control-label">Password:</label>
-                                        <input name="txt_upass" class="form-control input-sm" type="password" placeholder="Password"/>
-                                    </div>
 
                                     <div class="form-group">
                                         <label class="control-label">Image:</label>

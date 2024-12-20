@@ -98,9 +98,9 @@
                 <div class="col-xs-7 col-sm-5 col-md-8" style="background: white;  ">
                     <div class="pull-left" style="font-size: 16px;"><b>
                         Republic of the Philippines<br>
-                        Municipality of Opol<br>
+                        Municipality of Cagayan de Oro<br>
                         Province of Misamis Oriental<br>
-                        BARANGAY IGPIT<br>
+                        BARANGAY KAUSWAGAN<br>
                         Tel. 999-0000<br></b>
                     </div>
                     <div class="pull-right" style="border: 2px solid black;">
@@ -113,7 +113,7 @@
                     <div class="col-xs-12 col-md-12">
                         <p class="text-center" style="font-size: 20px; font-size:bold;">OFFICE OF THE BARANGAY CAPTAIN<br><b style="font-size: 28px;">BARANGAY CLEARANCE</b></p>
                         <p style="font-size: 18px;">TO WHOM IT MAY CONCERN:</p>
-                        <p style="text-indent:40px;text-align: justify;">This is to certify that the person whose photo, signature and right thumb mark appear herein, is a resident of Barangay Igpit, Opol, Misamis Oriental and that the person had requested a criminal check from this office following is/are our findings.</p>
+                        <p style="text-indent:40px;text-align: justify;">This is to certify that the person whose photo, signature and right thumb mark appear herein, is a resident of Barangay Kauswagan, Cagayan de Oro, Misamis Oriental and that the person had requested a criminal check from this office following is/are our findings.</p>
 
                         <?php
                             $qry=mysqli_query($con,"SELECT * from tblresident r left join tblclearance c on c.residentid = r.id where residentid = '".$_GET['resident']."' and clearanceNo = '".$_GET['clearance']."' ");

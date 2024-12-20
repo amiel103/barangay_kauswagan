@@ -28,7 +28,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Permit Clearance
+                        Cedulla
                     </h1>
                     
                 </section>
@@ -79,13 +79,12 @@
                                                 <?php
                                                     }
                                                 ?>
-                                                <th>Resident</th>
-                                                <th>Business Name</th>
-                                                <th>Business Address</th>
-                                                <th>Type of Business</th>
-                                                <th>OR Number</th>
-                                                <th>Amount</th>
-                                                <th style="width: 40px !important;">Option</th>
+                                                <th>Resident Id</th>
+                                                <th>Address</th>
+
+                                                <th>Civil Status</th>
+                                                <th>Birthplace</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -93,20 +92,20 @@
 
                                             if(!isset($_SESSION['staff']))
                                             {
+                                                // $squery = mysqli_query($con, "SELECT *,CONCAT(r.lname, ', ' ,r.fname, ' ' ,r.mname) as residentname,p.id as pid FROM tblpermit p left join tblresident r on r.id = p.residentid where status = 'Approved'") or die('Error: ' . mysqli_error($con));
+                                                $squery = mysqli_query($con, "SELECT * FROM tblcedula") or die('Error: ' . mysqli_error($con));
 
-                                                $squery = mysqli_query($con, "SELECT *,CONCAT(r.lname, ', ' ,r.fname, ' ' ,r.mname) as residentname,p.id as pid FROM tblpermit p left join tblresident r on r.id = p.residentid where status = 'Approved'") or die('Error: ' . mysqli_error($con));
                                                 while($row = mysqli_fetch_array($squery))
                                                 {
                                                     echo '
                                                     <tr>
-                                                        <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['pid'].'" /></td>
-                                                        <td>'.$row['residentname'].'</td>
-                                                        <td>'.$row['businessName'].'</td>
-                                                        <td>'.$row['businessAddress'].'</td>
-                                                        <td>'.$row['typeOfBusiness'].'</td>
-                                                        <td>'.$row['orNo'].'</td>
-                                                        <td>₱ '.number_format($row['samount'],2).'</td>
-                                                        <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['pid'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
+                                                        <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['id'].'" /></td>
+                                                        <td>'.$row['ResidentId'].'</td>
+                                                        <td>'.$row['Address'].'</td>
+                                                        <td>'.$row['CivilStatus'].'</td>
+                                                        <td>'.$row['Birthplace'].'</td>
+    
+                                                        <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></td>
                                                     </tr>
                                                     ';
 
@@ -442,6 +441,10 @@
         <!-- jQuery 2.0.2 -->
         <?php }
         include "../footer.php"; ?>
+
+
+
+
 <script type="text/javascript">
     <?php 
     if(!isset($_SESSION['staff']))

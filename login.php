@@ -44,6 +44,17 @@ session_start();
         </div>
 
       <?php
+
+        consolePrint('asdf');
+        function consolePrint($data) {
+          $output = $data;
+          if (is_array($output))
+              $output = implode(',', $output);
+
+          echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+        }
+
+
         include "pages/connection.php";
         if(isset($_POST['btn_login']))
         { 
@@ -53,6 +64,12 @@ session_start();
 
             $admin = mysqli_query($con, "SELECT * from tbluser where username = '$username' and password = '$password' and type = 'administrator' ");
             $numrow_admin = mysqli_num_rows($admin);
+
+
+            echo $username;
+            echo $password;
+            consolePrint($username);
+            consolePrint($password);
 
             $zone = mysqli_query($con, "SELECT * from tblzone where username = '$username' and password = '$password'");
             $numrow_zone = mysqli_num_rows($zone);
@@ -90,7 +107,7 @@ session_start();
             }
             else
             {
-              echo '<script type="text/javascript">document.getElementById("error").innerHTML = "Invalid Account";</script>';
+              echo '<script type="text/javascript">document.getElementById("error").innerHTML = "Invalid ssdfAccount";</script>';
                
             }
              

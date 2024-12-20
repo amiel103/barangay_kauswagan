@@ -40,8 +40,6 @@ if(isset($_POST['btn_add'])){
     $txt_lightning = $_POST['txt_lightning'];
     $txt_toilet = $_POST['txt_toilet'];
     $txt_faddress = $_POST['txt_faddress'];
-    $txt_uname = $_POST['txt_uname'];
-    $txt_upass = $_POST['txt_upass'];
 
     $txt_remarks = $_POST['txt_remarks'];
 
@@ -58,8 +56,8 @@ if(isset($_POST['btn_add'])){
         $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) values ('".$_SESSION['role']."', NOW(), '".$action."')");
     }
 
-    $su = mysqli_query($con,"SELECT * from tblresident where username = '".$txt_uname."' ");
-    $ct = mysqli_num_rows($su);
+    
+    $ct = 0;
     
     if($ct == 0){
 
@@ -102,9 +100,7 @@ if(isset($_POST['btn_add'])){
                                         sanitaryToilet,
                                         formerAddress,
                                         remarks,
-                                        image,
-                                        username,
-                                        password
+                                        image
                                     ) 
                                     values (
                                         '$txt_lname', 
@@ -140,9 +136,7 @@ if(isset($_POST['btn_add'])){
                                         '$txt_toilet', 
                                         '$txt_faddress', 
                                         '$txt_remarks', 
-                                        '$txt_image',
-                                        '$txt_uname', 
-                                        '$txt_upass'
+                                        '$txt_image'
                                     )"
                             ) 
                             or die('Error: ' . mysqli_error($con));
@@ -192,9 +186,7 @@ if(isset($_POST['btn_add'])){
                                         sanitaryToilet,
                                         formerAddress,
                                         remarks,
-                                        image,
-                                        username,
-                                        password
+                                        image
                                     ) 
                                     values (
                                         '$txt_lname', 
@@ -230,9 +222,7 @@ if(isset($_POST['btn_add'])){
                                         '$txt_toilet', 
                                         '$txt_faddress', 
                                         '$txt_remarks', 
-                                        '$txt_image',
-                                        '$txt_uname', 
-                                        '$txt_upass'
+                                        '$txt_image'
                                     )"
                             ) 
                             or die('Error: ' . mysqli_error($con));

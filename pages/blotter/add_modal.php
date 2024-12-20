@@ -60,7 +60,7 @@
                                     </div>  
                                     <div class="col-sm-4">
                                         <select name="txt_pname" class="form-control input-sm select2" style="width:100%">
-                                            <option disabled selected>-- Select Complainee --</option>
+                                            <option disabled selected>-- Select Complaieee --</option>
                                             <?php
                                                 $qp = mysqli_query($con,"SELECT * from tblresident");
                                                 while($rowp = mysqli_fetch_array($qp)){

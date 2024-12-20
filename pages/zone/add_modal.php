@@ -5,7 +5,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Manage Permit Admin</h4>
+                        <h4 class="modal-title">Manage Zone Leader</h4>
                     </div>
                     <div class="modal-body">
                         
@@ -21,7 +21,7 @@
                                     <label id="user_msg" style="color:#CC0000;" ></label>
                                 </div>
                                 <div class="form-group">
-                                    <label>Password:</label>
+                                    <label>Username:</label>
                                     <input name="txt_pass" class="form-control input-sm" type="password" placeholder="*******"/>
                                 </div>
                             </div>
