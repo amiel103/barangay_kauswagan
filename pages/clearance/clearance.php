@@ -115,33 +115,13 @@
                                                             <td>'.$row['Age'].'</td>
                                                             <td>'.$row['ContactNumber'].'</td>
                                                             <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
-                                                            <a target="_blank" href="clearance_form.php?resident='.$row['residentid'].'&clearance='.$row['clearanceNo'].'&val='.base64_encode($row['clearanceNo'].'|'.$row['residentname'].'|'.$row['dateRecorded']).'" onclick="location.reload();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
+                                                            <a target="_blank" href="clearance_form.php?resident='.$row['ResidentId'].'&clearance='.$row['id'].'&val='.base64_encode($row['id'].'|'.$nameq[0].' '.$nameq[1].'|'.$row['dateCreated']).'" onclick="location.reload();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
                                                         </tr>
                                                         ';
 
                                                         include "edit_modal.php";
                                                     }
-                                                }
-                                                else{
-                                                    $squery = mysqli_query($con, "SELECT *,CONCAT(r.lname, ', ' ,r.fname, ' ' ,r.mname) as residentname,p.id as pid FROM tblclearance p left join tblresident r on r.id = p.residentid  where status = 'Approved'") or die('Error: ' . mysqli_error($con));
-                                                    while($row = mysqli_fetch_array($squery))
-                                                    {
-                                                        echo '
-                                                        <tr>
-                                                            <td>'.$row['clearanceNo'].'</td>
-                                                            <td>'.$row['residentname'].'</td>
-                                                            <td>'.$row['findings'].'</td>
-                                                            <td>'.$row['purpose'].'</td>
-                                                            <td>'.$row['orNo'].'</td>
-                                                            <td>₱ '.number_format($row['samount'],2).'</td>
-                                                            <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['pid'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
-                                                            <a target="_blank" href="clearance_form.php?resident='.$row['residentid'].'&clearance='.$row['clearanceNo'].'&val='.sha1($row['clearanceNo'].'|'.$row['residentname'].'|'.$row['dateRecorded']).'" onclick="location.reload();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
-                                                        </tr>
-                                                        ';
-
-                                                        include "edit_modal.php";
-                                                    }
-                                                }
+                                                } 
                                                 ?>
                                             </tbody>
                                         </table>
@@ -150,7 +130,7 @@
 
                                         <div id="disapproved" class="tab-pane">
                                         <table id="table1" class="table table-bordered table-striped">
-                                            <thead>
+                                        <thead>
                                                 <tr>
                                                     <?php 
                                                         if(!isset($_SESSION['staff']))
@@ -160,46 +140,50 @@
                                                     <?php
                                                         }
                                                     ?>
+                                                    <th>Clearance #</th>
                                                     <th>Resident Name</th>
-                                                    <th>Findings</th>
+                                                    <th>Address</th>
                                                     <th>Purpose</th>
+                                                    <th>Age</th>
+                                                    <th>Contact Number</th>
+                                                    <th style="width: 15% !important;">Option</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
+
                                                 if(!isset($_SESSION['staff']))
                                                 {
 
-                                                    $squery = mysqli_query($con, "SELECT *,CONCAT(r.lname, ', ' ,r.fname, ' ' ,r.mname) as residentname,p.id as pid FROM tblclearance p left join tblresident r on r.id = p.residentid where status = 'Disapproved' ") or die('Error: ' . mysqli_error($con));
+                                                    $squery = mysqli_query($con, "SELECT * from tblclearance2") or die('Error: ' . mysqli_error($con));
                                                     while($row = mysqli_fetch_array($squery))
                                                     {
+                                                        
+                                                        $namequery = mysqli_query($con, "SELECT lname,fname from tblresident where id=".$row['ResidentId'] ) or die('Error: ' . mysqli_error($con));
+                                                        $nameq = mysqli_fetch_array($namequery);
+
+                                                        // if(){
+                                                            
+                                                        // }
+
+                                                        
                                                         echo '
                                                         <tr>
-                                                            <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['pid'].'" /></td>
-                                                            <td>'.$row['residentname'].'</td>
-                                                            <td>'.$row['findings'].'</td>
-                                                            <td>'.$row['purpose'].'</td>
+                                                            <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['id'].'" /></td>
+                                                            <td>'.$row['id'].'</td>
+                                                            <td>'.$nameq[0].' '.$nameq[1].'</td>
+                                                            <td>'.$row['Address'].'</td>
+                                                            <td>'.$row['Purpose'].'</td>
+                                                            <td>'.$row['Age'].'</td>
+                                                            <td>'.$row['ContactNumber'].'</td>
+                                                            <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+                                                            <a target="_blank" href="clearance_form.php?resident='.$row['ResidentId'].'&clearance='.$row['id'].'&val='.base64_encode($row['id'].'|'.$nameq[0].' '.$nameq[1].'|'.$row['dateCreated']).'" onclick="location.reload();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
                                                         </tr>
                                                         ';
 
                                                         include "edit_modal.php";
                                                     }
-                                                }
-                                                else{
-                                                    $squery = mysqli_query($con, "SELECT *,CONCAT(r.lname, ', ' ,r.fname, ' ' ,r.mname) as residentname,p.id as pid FROM tblclearance p left join tblresident r on r.id = p.residentid where status = 'Disapproved' ") or die('Error: ' . mysqli_error($con));
-                                                    while($row = mysqli_fetch_array($squery))
-                                                    {
-                                                        echo '
-                                                        <tr>
-                                                            <td>'.$row['residentname'].'</td>
-                                                            <td>'.$row['findings'].'</td>
-                                                            <td>'.$row['purpose'].'</td>
-                                                        </tr>
-                                                        ';
-
-                                                        include "edit_modal.php";
-                                                    }
-                                                }
+                                                } 
                                                 ?>
                                             </tbody>
                                         </table>

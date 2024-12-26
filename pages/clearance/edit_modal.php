@@ -1,4 +1,8 @@
-<?php echo '<div id="editModal'.$row['id'].'" class="modal fade">
+<?php echo '
+<script>
+console.log("asdasdasd")
+</script>
+<div id="editModal'.$row['id'].'" class="modal fade">
 <form method="post">
   <div class="modal-dialog modal-sm" style="width:500px !important;">
     <div class="modal-content">

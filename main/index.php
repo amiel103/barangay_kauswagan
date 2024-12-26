@@ -45,7 +45,10 @@
         <li class="active"><a href="index.php">Home <span class="sr-only">(current)</span></a></li>
         <li><a href="about.php">About</a></li>
         <li><a href="../login.php">Admin/Staff</a></li>
-        <li><a href="../pages/resident/login.php">Front Desk</a></li>
+
+        <!-- <li><a href="../pages/resident/login.php">Front Desk</a></li> -->
+        <li><a href="../pages/permit/permit.php ">Front Desk</a></li>
+        <!-- pages/permit/permit.php -->
         <li><a href="../pages/zone/login.php">Permit Admin</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->

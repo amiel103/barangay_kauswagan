@@ -35,7 +35,7 @@ if(isset($_POST['btn_add'])){
     if($_SESSION['role'] == "Administrator")
     {
         $query = mysqli_query($con,"INSERT INTO tblcedula (
-            ResidentId,Address,Birthplace,Gender,Birthday,CivilStatus,Height, Weight,EmploymentStatus, Occupation, MonthlyIncome,DateCreated 
+            ResidentId,Address,Birthplace,Gender,Birthday,CivilStatus,Height, Weight,EmploymentStatus, Occupation, MonthlyIncome,DateCreated,Status 
         ) 
         values (
             '$txt_id[0]',  
@@ -49,14 +49,31 @@ if(isset($_POST['btn_add'])){
             '$txt_employmentStatus', 
             '$txt_occupation', 
             '$txt_monthlyIncome',
-            '$date')"
+            '$date',
+            'APPROVED')"
         ) or die('Error: ' . mysqli_error($con));
     }
-    // else
-    // {
-    //     $query = mysqli_query($con,"INSERT INTO tblpermit (residentid,businessName,businessAddress,typeOfBusiness,orNo,samount,dateRecorded,recordedBy,status) 
-    //     values ('$ddl_resident', '$txt_busname', '$txt_busadd', '$ddl_tob', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['username']."','New')") or die('Error: ' . mysqli_error($con));
-    // }
+    else
+    {
+        $query = mysqli_query($con,"INSERT INTO tblcedula (
+            ResidentId,Address,Birthplace,Gender,Birthday,CivilStatus,Height, Weight,EmploymentStatus, Occupation, MonthlyIncome,DateCreated,Status 
+        ) 
+        values (
+            '$txt_id[0]',  
+            '$txt_address', 
+            '$txt_birthplace', 
+            '$txt_gender', 
+            '$txt_birthday', 
+            '$txt_civilStatus', 
+            '$txt_height', 
+            '$txt_weight', 
+            '$txt_employmentStatus', 
+            '$txt_occupation', 
+            '$txt_monthlyIncome',
+            '$date',
+            'PENDING')"
+        ) or die('Error: ' . mysqli_error($con));
+    }
     if($query == true)
     {
         $_SESSION['added'] = 1;
@@ -105,7 +122,9 @@ if(isset($_POST['btn_approve']))
     $txt_ornum = $_POST['txt_ornum'];
     $txt_amount = $_POST['txt_amount'];
 
-    $approve_query = mysqli_query($con,"UPDATE tblpermit set orNo = '".$txt_ornum."', samount = '".$txt_amount."',status = 'Approved'  where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
+
+    // $approve_query = mysqli_query($con,"UPDATE tblpermit set orNo = '".$txt_ornum."', samount = '".$txt_amount."',status = 'Approved'  where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
+    $approve_query = mysqli_query($con,"UPDATE tblcedula set Status = 'APPROVED' where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
 
     if($approve_query == true){
         header("location: ".$_SERVER['REQUEST_URI']);
@@ -116,7 +135,7 @@ if(isset($_POST['btn_disapprove']))
 {
     $txt_id = $_POST['hidden_id'];
 
-    $disapprove_query = mysqli_query($con,"UPDATE tblpermit set status = 'Disapproved'  where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
+    $disapprove_query = mysqli_query($con,"UPDATE tblcedula set Status = 'Disapproved'  where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
 
     if($disapprove_query == true){
         header("location: ".$_SERVER['REQUEST_URI']);

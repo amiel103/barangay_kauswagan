@@ -66,8 +66,8 @@ session_start();
             $numrow_admin = mysqli_num_rows($admin);
 
 
-            echo $username;
-            echo $password;
+            // echo $username;
+            // echo $password;
             consolePrint($username);
             consolePrint($password);
 
@@ -107,7 +107,7 @@ session_start();
             }
             else
             {
-              echo '<script type="text/javascript">document.getElementById("error").innerHTML = "Invalid ssdfAccount";</script>';
+              echo '<script type="text/javascript">document.getElementById("error").innerHTML = "Invalid Account";</script>';
                
             }
              
