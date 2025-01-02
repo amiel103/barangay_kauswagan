@@ -238,7 +238,7 @@
                                                 <th>Resident</th>
                                                 <th>Address</th>
                                                 <th>Brithplace</th>
-                                                <th>Status</th>
+                                                <th>Statuss</th>
                                                 <th style="width: 25% !important;">Option</th>
                                             </tr>
                                         </thead>

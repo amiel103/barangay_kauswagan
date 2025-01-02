@@ -50,6 +50,12 @@ session_start();
             $username = $_POST['txt_username'];
             $password = $_POST['txt_password'];
 
+
+            if(  strlen($password) <8) {
+              echo '<script type="text/javascript">document.getElementById("error").innerHTML = "Password cant be less than 8 characters";</script>';
+              return;
+            }
+
             $user = mysqli_query($con, "SELECT * from tblzone where username = '$username' and password = '$password' ");
             $numrow_user = mysqli_num_rows($user);
 

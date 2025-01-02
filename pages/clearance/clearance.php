@@ -37,7 +37,7 @@
                 <section class="content">
 
                     <?php
-                    if($_SESSION['role'] == "Administrator" || isset($_SESSION['staff']))
+                    if($_SESSION['role'] == "Administrator" || $_SESSION['role'] == "Resident")
                     {
                     ?>
 
@@ -50,12 +50,12 @@
                                         <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addModal"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Clearance</button>  
 
                                         <?php 
-                                            if(!isset($_SESSION['staff']))
-                                            {
+                                            // if(!isset($_SESSION['staff']))
+                                            // {
                                         ?>
                                         <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button> 
                                         <?php
-                                            }
+                                            // }
                                         ?>
                                 
                                     </div>                                
@@ -75,31 +75,35 @@
                                             <thead>
                                                 <tr>
                                                     <?php 
-                                                        if(!isset($_SESSION['staff']))
-                                                        {
+                                                        // if(!isset($_SESSION['staff']))
+                                                        // {
                                                     ?>
                                                     <th style="width: 20px !important;"><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/></th>
                                                     <?php
-                                                        }
+                                                        // }
                                                     ?>
                                                     <th>Clearance #</th>
                                                     <th>Resident Name</th>
                                                     <th>Address</th>
                                                     <th>Purpose</th>
                                                     <th>Age</th>
-                                                    <th>Contact Number</th>
+                                                    <th>Approved</th>
                                                     <th style="width: 15% !important;">Option</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
 
-                                                if(!isset($_SESSION['staff']))
-                                                {
+                                                // if(!isset($_SESSION['staff']))
+                                                // {
 
                                                     $squery = mysqli_query($con, "SELECT * from tblclearance2") or die('Error: ' . mysqli_error($con));
                                                     while($row = mysqli_fetch_array($squery))
                                                     {
+
+                                                        if($row['Approved'] != "APPROVED" ){
+                                                            continue;
+                                                        }
                                                         
                                                         $namequery = mysqli_query($con, "SELECT lname,fname from tblresident where id=".$row['ResidentId'] ) or die('Error: ' . mysqli_error($con));
                                                         $nameq = mysqli_fetch_array($namequery);
@@ -113,7 +117,7 @@
                                                             <td>'.$row['Address'].'</td>
                                                             <td>'.$row['Purpose'].'</td>
                                                             <td>'.$row['Age'].'</td>
-                                                            <td>'.$row['ContactNumber'].'</td>
+                                                            <td>'.$row['Approved'].'</td>
                                                             <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
                                                             <a target="_blank" href="clearance_form.php?resident='.$row['ResidentId'].'&clearance='.$row['id'].'&val='.base64_encode($row['id'].'|'.$nameq[0].' '.$nameq[1].'|'.$row['dateCreated']).'" onclick="location.reload();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
                                                         </tr>
@@ -121,7 +125,7 @@
 
                                                         include "edit_modal.php";
                                                     }
-                                                } 
+                                                // } 
                                                 ?>
                                             </tbody>
                                         </table>
@@ -133,31 +137,35 @@
                                         <thead>
                                                 <tr>
                                                     <?php 
-                                                        if(!isset($_SESSION['staff']))
-                                                        {
+                                                        // if(!isset($_SESSION['staff']))
+                                                        // {
                                                     ?>
                                                     <th style="width: 20px !important;"><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/></th>
                                                     <?php
-                                                        }
+                                                        // }
                                                     ?>
                                                     <th>Clearance #</th>
                                                     <th>Resident Name</th>
                                                     <th>Address</th>
                                                     <th>Purpose</th>
                                                     <th>Age</th>
-                                                    <th>Contact Number</th>
+                                                    <th>Approved</th>
                                                     <th style="width: 15% !important;">Option</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
 
-                                                if(!isset($_SESSION['staff']))
-                                                {
+                                                // if(!isset($_SESSION['staff']))
+                                                // {
 
                                                     $squery = mysqli_query($con, "SELECT * from tblclearance2") or die('Error: ' . mysqli_error($con));
                                                     while($row = mysqli_fetch_array($squery))
                                                     {
+
+                                                        if($row['Approved'] == "APPROVED" ){
+                                                            continue;
+                                                        }
                                                         
                                                         $namequery = mysqli_query($con, "SELECT lname,fname from tblresident where id=".$row['ResidentId'] ) or die('Error: ' . mysqli_error($con));
                                                         $nameq = mysqli_fetch_array($namequery);
@@ -175,7 +183,7 @@
                                                             <td>'.$row['Address'].'</td>
                                                             <td>'.$row['Purpose'].'</td>
                                                             <td>'.$row['Age'].'</td>
-                                                            <td>'.$row['ContactNumber'].'</td>
+                                                            <td>'.$row['Approved'].'</td>
                                                             <td><button class="btn btn-primary btn-sm" data-target="#editModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
                                                             <a target="_blank" href="clearance_form.php?resident='.$row['ResidentId'].'&clearance='.$row['id'].'&val='.base64_encode($row['id'].'|'.$nameq[0].' '.$nameq[1].'|'.$row['dateCreated']).'" onclick="location.reload();" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Generate</a></td>
                                                         </tr>
@@ -183,7 +191,7 @@
 
                                                         include "edit_modal.php";
                                                     }
-                                                } 
+                                                // } 
                                                 ?>
                                             </tbody>
                                         </table>
@@ -231,22 +239,28 @@
                                                     <th style="width: 20px !important;"><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/></th>
                                                     <th>Resident Name</th>
                                                     <th>Purpose</th>
+                                                    <th>Status</th>
                                                     <th style="width: 25% !important;">Option</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $squery = mysqli_query($con, "SELECT *,CONCAT(r.lname, ', ' ,r.fname, ' ' ,r.mname) as residentname,p.id as pid FROM tblclearance p left join tblresident r on r.id = p.residentid  where status = 'New'") or die('Error: ' . mysqli_error($con));
+                                                $squery = mysqli_query($con, "SELECT * FROM tblclearance2") or die('Error: ' . mysqli_error($con));
                                                 while($row = mysqli_fetch_array($squery))
                                                 {
+
+                                                    if($row['Approved']=='APPROVED'){
+                                                        continue;
+                                                    }
                                                     echo '
                                                     <tr>
-                                                        <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['pid'].'" /></td>
-                                                        <td>'.$row['residentname'].'</td>
-                                                        <td>'.$row['purpose'].'</td>
+                                                        <td><input type="checkbox" name="chk_delete[]" class="chk_delete" value="'.$row['id'].'" /></td>
+                                                        <td>'.$row['ResidentId'].'</td>
+                                                        <td>'.$row['Purpose'].'</td>
+                                                        <td>'.$row['Approved'].'</td>
                                                         <td>
-                                                            <button class="btn btn-success btn-sm" data-target="#approveModal'.$row['pid'].'" data-toggle="modal"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Approve</button>
-                                                            <button class="btn btn-danger btn-sm" data-target="#disapproveModal'.$row['pid'].'" data-toggle="modal"><i class="fa fa-thumbs-down" aria-hidden="true"></i> Disapprove</button>
+                                                            <button class="btn btn-success btn-sm" data-target="#approveModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Approve</button>
+                                                            <button class="btn btn-danger btn-sm" data-target="#disapproveModal'.$row['id'].'" data-toggle="modal"><i class="fa fa-thumbs-down" aria-hidden="true"></i> Disapprove</button>
                                                         </td>
                                                     </tr>
                                                     ';

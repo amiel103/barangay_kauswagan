@@ -1,7 +1,7 @@
   <?php
 
-   echo  '<header class="header">
-            <a href="#" class="logo">
+   echo  '<header class="header" >
+            <a href="#" class="logo" >
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 Barangay Information System
             </a>

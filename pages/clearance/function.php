@@ -29,55 +29,106 @@ if(isset($_POST['btn_add'])){
     }
 
     if($num_rows == 0){
-        $query = mysqli_query($con,"INSERT INTO tblclearance2 (
-            ResidentId,
-            Address,
-            Birthdate,
-            Age,
-            BloodType,
-            ContactNumber,
-            BirthPlace,
-            CivilStatus,
-            YearsKauswagan,
-            Email,
-            ForPurpose,
-            Purpose,
-            Others,
-            Remarks,
-            IndigencyApproved,
-            LuponApproval,
-            dateCreated
-        ) 
-        values (
-            '$ddl_resident',
-            '$txt_address',
-            '$txt_birthdate',
-            '$txt_age',
-            '$txt_bloodType',
-            '$txt_contactNumber',
-            '$txt_birthPlace',
-            '$txt_civilStatus',
-            '$txt_years',
-            '$txt_email',
-            '$txt_for',
-            '$txt_purpose',
-            '$txt_others',
-            '$txt_remarks',
-            '$txt_indigencyApproved',
-            '$txt_luponApproved', 
-            '$date' 
-        )"
-            
-        ) or die('Error: ' . mysqli_error($con));
+        
     
-        // if($_SESSION['role'] == "Administrator"){
-        //     $query = mysqli_query($con,"INSERT INTO tblclearance2 (clearanceNo,residentid,findings,purpose,orNo,samount,dateRecorded,recordedBy,status) 
-        //     values ('$txt_cnum','$ddl_resident', '$txt_findings','$txt_purpose', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['username']."','Approved')") or die('Error: ' . mysqli_error($con));
-        // }
-        // else{
-        //     $query = mysqli_query($con,"INSERT INTO tblclearance2 (clearanceNo,residentid,findings,purpose,orNo,samount,dateRecorded,recordedBy,status) 
-        //     values ('$txt_cnum','$ddl_resident', '$txt_findings','$txt_purpose', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['username']."','New')") or die('Error: ' . mysqli_error($con));
-        // }
+        if($_SESSION['role'] == "Administrator"){
+            // $query = mysqli_query($con,"INSERT INTO tblclearance2 (clearanceNo,residentid,findings,purpose,orNo,samount,dateRecorded,recordedBy,status) 
+            // values ('$txt_cnum','$ddl_resident', '$txt_findings','$txt_purpose', '$txt_ornum', '$txt_amount', '$date', '".$_SESSION['username']."','Approved')") or die('Error: ' . mysqli_error($con));
+            
+            $query = mysqli_query($con,"INSERT INTO tblclearance2 (
+                ResidentId,
+                Address,
+                Birthdate,
+                Age,
+                BloodType,
+                ContactNumber,
+                BirthPlace,
+                CivilStatus,
+                YearsKauswagan,
+                Email,
+                ForPurpose,
+                Purpose,
+                Others,
+                Remarks,
+                IndigencyApproved,
+                LuponApproval,
+                Approved,
+                dateCreated
+            ) 
+            values (
+                '$ddl_resident',
+                '$txt_address',
+                '$txt_birthdate',
+                '$txt_age',
+                '$txt_bloodType',
+                '$txt_contactNumber',
+                '$txt_birthPlace',
+                '$txt_civilStatus',
+                '$txt_years',
+                '$txt_email',
+                '$txt_for',
+                '$txt_purpose',
+                '$txt_others',
+                '$txt_remarks',
+                '$txt_indigencyApproved',
+                '$txt_luponApproved', 
+                'APPROVED',
+                '$date' 
+            )"
+                
+            ) or die('Error: ' . mysqli_error($con));
+    
+    
+        }
+        else{
+
+            $query = mysqli_query($con,"INSERT INTO tblclearance2 (
+                ResidentId,
+                Address,
+                Birthdate,
+                Age,
+                BloodType,
+                ContactNumber,
+                BirthPlace,
+                CivilStatus,
+                YearsKauswagan,
+                Email,
+                ForPurpose,
+                Purpose,
+                Others,
+                Remarks,
+                IndigencyApproved,
+                LuponApproval,
+                Approved,
+                dateCreated
+            ) 
+            values (
+                '$ddl_resident',
+                '$txt_address',
+                '$txt_birthdate',
+                '$txt_age',
+                '$txt_bloodType',
+                '$txt_contactNumber',
+                '$txt_birthPlace',
+                '$txt_civilStatus',
+                '$txt_years',
+                '$txt_email',
+                '$txt_for',
+                '$txt_purpose',
+                '$txt_others',
+                '$txt_remarks',
+                '$txt_indigencyApproved',
+                '$txt_luponApproved', 
+                'PENDING',
+                '$date' 
+            )"
+                
+            ) or die('Error: ' . mysqli_error($con));
+        }
+
+
+
+
         if($query == true)
         {
             $_SESSION['added'] = 1;
@@ -124,12 +175,11 @@ if(isset($_POST['btn_req'])){
 if(isset($_POST['btn_approve']))
 {
     $txt_id = $_POST['hidden_id'];
-    $txt_cnum = $_POST['txt_cnum'];
-    $txt_findings = $_POST['txt_findings'];
-    $txt_ornum = $_POST['txt_ornum'];
-    $txt_amount = $_POST['txt_amount'];
 
-    $approve_query = mysqli_query($con,"UPDATE tblclearance set clearanceNo= '".$txt_cnum."', findings = '".$txt_findings."', orNo = '".$txt_ornum."', samount = '".$txt_amount."', status='Approved' where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
+    // echo '<script>console.log("asdasd"+'.$txt_id.')</script>';
+   
+
+    $approve_query = mysqli_query($con,"UPDATE tblclearance2 set Approved = 'APPROVED' where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
 
     if($approve_query == true){
         header("location: ".$_SERVER['REQUEST_URI']);
@@ -140,8 +190,8 @@ if(isset($_POST['btn_disapprove']))
 {
 
     $txt_id = $_POST['hidden_id'];
-    $txt_findings = $_POST['txt_findings'];
-    $disapprove_query = mysqli_query($con,"UPDATE tblclearance set findings = '".$txt_findings."' , status='Disapproved' where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
+    // $txt_findings = $_POST['txt_findings'];
+    $disapprove_query =mysqli_query($con,"UPDATE tblclearance2 set Approved = 'DISAPPROVED' where id = '".$txt_id."' ") or die('Error: ' . mysqli_error($con));
 
     if($disapprove_query == true){
         header("location: ".$_SERVER['REQUEST_URI']);

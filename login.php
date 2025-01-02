@@ -61,6 +61,13 @@ session_start();
             $username = $_POST['txt_username'];
             $password = $_POST['txt_password'];
 
+            
+            consolePrint( strlen($password) );
+            if(  strlen($password) <8) {
+              echo '<script type="text/javascript">document.getElementById("error").innerHTML = "Password cant be less than 8 characters";</script>';
+              return;
+            }
+
 
             $admin = mysqli_query($con, "SELECT * from tbluser where username = '$username' and password = '$password' and type = 'administrator' ");
             $numrow_admin = mysqli_num_rows($admin);

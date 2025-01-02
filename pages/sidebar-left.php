@@ -1,9 +1,10 @@
 <?php
 
 	echo '
-	<aside class="left-side sidebar-offcanvas">
+	<aside class="left-side sidebar-offcanvas" style="background-color: #199103;">
                 <!-- sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
+                <section class="sidebar" >
+
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         
