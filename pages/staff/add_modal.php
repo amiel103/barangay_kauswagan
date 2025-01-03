@@ -1,7 +1,7 @@
 <!-- ========================= MODAL ======================= -->
             <div id="addModal" class="modal fade">
             <form method="post">
-              <div class="modal-dialog modal-sm" style="width:300px !important;">
+              <div class="modal-dialog modal-sm" style="width:300px !important;" data-keyboard="false" data-backdrop="static">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -24,6 +24,7 @@
                                     <label>Password:</label>
                                     <input name="txt_pass" class="form-control input-sm" type="password" placeholder="Password"/>
                                 </div>
+                                <label id="error" class="label label-danger pull-right"></label> 
                             </div>
                         </div>
                         

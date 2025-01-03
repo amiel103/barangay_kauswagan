@@ -37,10 +37,7 @@
                                     </div> -->
 
 
-                                    <div class="form-group">
-                                        <label class="control-label">Barangay:</label>
-                                        <input name="txt_brgy" class="form-control input-sm input-size" type="text" placeholder="Barangay"/>
-                                    </div>
+                                   
 
                                     <div class="form-group">
                                         <label class="control-label">Household #:</label>
@@ -74,11 +71,6 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label">IgpitID:</label>
-                                        <input name="txt_igpit" class="form-control input-sm input-size" type="number" placeholder="" min="1" />
-                                    </div>
-
-                                    <div class="form-group">
                                         <label class="control-label">Educational Attainment:</label>
                                         <select name="ddl_eattain" class="form-control input-sm input-size">
                                             <option>No schooling completed</option>
@@ -104,28 +96,17 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label">Water Usage:</label>
-                                        <select name="txt_water" class="form-control input-sm input-size">
-                                            <option>Faucet</option>
-                                            <option>Deep Well</option>
-                                        </select>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label class="control-label">Sanitary Toilet:</label>
-                                        <select name="txt_toilet" class="form-control input-sm input-size">
-                                            <option>Water-sealed</option>
-                                            <option>Antipolo</option>
-                                            <option>None</option>
-                                        </select>
-                                    </div>
-
-
-                                    <div class="form-group">
                                         <label class="control-label">Remarks:</label>
                                         <input name="txt_remarks" class="form-control input-sm input-size" type="text" placeholder="Remarks"/>
                                     </div>
+                                    
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label">Former Address:</label>
+                                        <input name="txt_faddress" class="form-control input-size" type="text" placeholder="Former Address"/>
+                                    </div>
+
+
 
         
 
@@ -169,7 +150,28 @@
 
                                     <div class="form-group">
                                         <label class="control-label">Occupation:</label>
-                                        <input name="txt_occp" class="form-control input-sm" type="text" placeholder="Occupation"/>
+                                        <select name="txt_occp" class="form-control input-sm" type="text" placeholder="Occupation">
+
+                                            <option>Student</option>
+                                            <option>Employed</option>
+                                            <option>Unemployed</option>
+
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label">Educational Attainment:</label>
+                                        <select name="ddl_eattain" class="form-control input-sm input-size">
+                                            <option>No schooling completed</option>
+                                            <option>Elementary</option>
+                                            <option>High school, undergrad</option>
+                                            <option>High school graduate</option>
+                                            <option>College, undergrad</option>
+                                            <option>Vocational</option>
+                                            <option>Bachelor’s degree</option>
+                                            <option>Master’s degree</option>
+                                            <option>Doctorate degree</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
@@ -183,15 +185,7 @@
                                     </div>
 
 
-                                    <div class="form-group">
-                                        <label class="control-label">Skills:</label>
-                                        <input name="txt_skills" class="form-control input-sm" type="text" placeholder="Skills"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label">PhilHealth #:</label>
-                                        <input name="txt_phno" class="form-control input-sm" type="number" max="999999999999" min="1" placeholder="eg. 010000000001"/>
-                                    </div>
+                                    
 
                                     <div class="form-group">
                                         <label class="control-label">House Ownership Status:</label>
@@ -211,20 +205,9 @@
                                         </select>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="control-label">Lightning Facilities:</label>
-                                        <select name="txt_lightning" class="form-control input-sm input-size">
-                                            <option>Electric</option>
-                                            <option>Lamp</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label">Former Address:</label>
-                                        <input name="txt_faddress" class="form-control input-sm" type="text" placeholder="Former Address"/>
-                                    </div>
-
                                     
+
+                                                                        
 
                                     <div class="form-group">
                                         <label class="control-label">Image:</label>
