@@ -4,6 +4,18 @@ if(isset($_POST['btn_add'])){
     $txt_uname = $_POST['txt_uname'];
     $txt_pass = $_POST['txt_pass'];
 
+
+    if(  strlen($txt_pass) <8) {
+        echo '<script type="text/javascript">document.getElementById("error").innerHTML = "Password cant be less than 8 characters";</script>';
+        return;
+    }
+
+    if(!preg_match('/[A-Z]/', $txt_pass)) {
+        echo '<script type="text/javascript">document.getElementById("error").innerHTML = "Must contain atleast 1 capital";</script>';
+        return;
+    }
+    
+
     if(isset($_SESSION['role'])){
         $action = 'Added Zone number '.$txt_zone;
         $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) values ('".$_SESSION['role']."', NOW(), '".$action."')");

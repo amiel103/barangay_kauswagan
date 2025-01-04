@@ -50,6 +50,11 @@
                                         <?php
                                             }
                                         ?>
+
+
+                                        <br>
+                                        <br>
+                                        <label id="error" class="label label-danger pull-left"></label> 
                                 
                                     </div>                                
                                 </div><!-- /.box-header -->

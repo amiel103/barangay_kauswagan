@@ -48,7 +48,7 @@
 
                     <?php
                     // if(($_SESSION['role'] == "Administrator") || isset($_SESSION['staff']))
-                    if(($_SESSION['role'] == "Administrator") || $_SESSION['role'] == "Resident")
+                    if(($_SESSION['role'] == "Administrator") || $_SESSION['role'] == "Resident" ||$_SESSION['staff'] == "Staff")
                     {
                     ?>
 
@@ -60,12 +60,12 @@
                                         
                                         <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addModal"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Permit</button>  
                                         <?php 
-                                            if(!isset($_SESSION['staff']))
-                                            {
+                                            // if(!isset($_SESSION['staff']))
+                                            // {
                                         ?>
                                         <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button> 
                                         <?php
-                                            }
+                                            // }
                                         ?>
                                 
                                     </div>                                
@@ -101,8 +101,8 @@
                                             <tbody>
                                                 <?php
 
-                                                if(!isset($_SESSION['staff']))
-                                                {
+                                                // if(!isset($_SESSION['staff']))
+                                                // {
                                                     // $squery = mysqli_query($con, "SELECT *,CONCAT(r.lname, ', ' ,r.fname, ' ' ,r.mname) as residentname,p.id as pid FROM tblpermit p left join tblresident r on r.id = p.residentid where status = 'Approved'") or die('Error: ' . mysqli_error($con));
                                                     $squery = mysqli_query($con, "SELECT * FROM tblcedula") or die('Error: ' . mysqli_error($con));
 
@@ -128,7 +128,7 @@
 
                                                         include "edit_modal.php";
                                                     }
-                                                }
+                                                // }
                                                 ?>
                                             </tbody>
                                         </table>
@@ -139,12 +139,12 @@
                                         <thead>
                                                 <tr>
                                                     <?php 
-                                                    if(!isset($_SESSION['staff']))
-                                                    {
+                                                    // if(!isset($_SESSION['staff']))
+                                                    // {
                                                     ?>
                                                     <th style="width: 20px !important;"><input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/></th>
                                                     <?php
-                                                        }
+                                                        // }
                                                     ?>
                                                     <th>Resident Id</th>
                                                     <th>Address</th>
@@ -157,8 +157,8 @@
                                             <tbody>
                                                 <?php
 
-                                                if(!isset($_SESSION['staff']))
-                                                {
+                                                // if(!isset($_SESSION['staff']))
+                                                // {
                                                     // $squery = mysqli_query($con, "SELECT *,CONCAT(r.lname, ', ' ,r.fname, ' ' ,r.mname) as residentname,p.id as pid FROM tblpermit p left join tblresident r on r.id = p.residentid where status = 'Approved'") or die('Error: ' . mysqli_error($con));
                                                     $squery = mysqli_query($con, "SELECT * FROM tblcedula") or die('Error: ' . mysqli_error($con));
 
@@ -186,7 +186,7 @@
                                                         }
                                                         include "edit_modal.php";
                                                     }
-                                                }
+                                                // }
                                                 ?>
                                             </tbody>
                                         </table>

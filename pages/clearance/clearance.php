@@ -37,7 +37,7 @@
                 <section class="content">
 
                     <?php
-                    if($_SESSION['role'] == "Administrator" || $_SESSION['role'] == "Resident")
+                    if($_SESSION['role'] == "Administrator" || $_SESSION['role'] == "Resident" || $_SESSION['staff'] == "Staff" )
                     {
                     ?>
 
