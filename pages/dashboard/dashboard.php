@@ -85,7 +85,7 @@
                                       <span class="info-box-text">Total Clearance</span>
                                       <span class="info-box-number">
                                         <?php
-                                            $q = mysqli_query($con,"SELECT * from tblclearance where status = 'Approved' ");
+                                            $q = mysqli_query($con,"SELECT * from tblclearance2 where Approved = 'APPROVED' ");
                                             $num_rows = mysqli_num_rows($q);
                                             echo $num_rows;
                                         ?>
@@ -101,10 +101,10 @@
                                     <a href="../permit/permit.php"><span class="info-box-icon bg-aqua"><i class="fa fa-file"></i></span></a>
 
                                     <div class="info-box-content">
-                                      <span class="info-box-text">Total Permit</span>
+                                      <span class="info-box-text">Total Cedula</span>
                                       <span class="info-box-number">
                                         <?php
-                                            $q = mysqli_query($con,"SELECT * from tblpermit where status = 'Approved' ");
+                                            $q = mysqli_query($con,"SELECT * from tblcedula where status = 'APPROVED' ");
                                             $num_rows = mysqli_num_rows($q);
                                             echo $num_rows;
                                         ?>

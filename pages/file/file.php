@@ -16,7 +16,7 @@ if (!isset($_SESSION['role'])) {
     <div class="wrapper row-offcanvas row-offcanvas-left">
         <?php include('../sidebar-left.php'); ?>
         <aside class="right-side">
-            <section class="content-header" style="background-color: yellow;">
+            <section class="content-header" style=";">
                 <h1>File Management</h1>
             </section>
             <section class="content">
@@ -36,7 +36,7 @@ if (!isset($_SESSION['role'])) {
                             <form method="post">
                                 <table id="table" class="table table-bordered table-striped">
                                     <thead>
-                                        <tr style="background-color: black; color: white;">
+                                        <tr style=>
                                             <th style="width: 20px !important;">
                                                 <input type="checkbox" name="chk_delete[]" class="cbxMain" onchange="checkMain(this)"/>
                                             </th>

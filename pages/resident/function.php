@@ -40,8 +40,6 @@ if(isset($_POST['btn_add'])){
     $txt_lightning = $_POST['txt_lightning'];
     $txt_toilet = $_POST['txt_toilet'];
     $txt_faddress = $_POST['txt_faddress'];
-    $txt_uname = $_POST['txt_uname'];
-    $txt_upass = $_POST['txt_upass'];
 
     $txt_remarks = $_POST['txt_remarks'];
 
@@ -58,8 +56,8 @@ if(isset($_POST['btn_add'])){
         $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) values ('".$_SESSION['role']."', NOW(), '".$action."')");
     }
 
-    $su = mysqli_query($con,"SELECT * from tblresident where username = '".$txt_uname."' ");
-    $ct = mysqli_num_rows($su);
+    
+    $ct = 0;
     
     if($ct == 0){
 
@@ -75,7 +73,6 @@ if(isset($_POST['btn_add'])){
                                         bdate,
                                         bplace,
                                         age,
-                                        barangay,
                                         zone,
                                         totalhousehold,
                                         differentlyabledperson,
@@ -91,20 +88,13 @@ if(isset($_POST['btn_add'])){
                                         nationality,
                                         gender,
                                         skills,
-                                        igpitID,
-                                        philhealthNo,
                                         highestEducationalAttainment,
                                         houseOwnershipStatus,
                                         landOwnershipStatus,
                                         dwellingtype,
-                                        waterUsage,
-                                        lightningFacilities,
-                                        sanitaryToilet,
                                         formerAddress,
                                         remarks,
-                                        image,
-                                        username,
-                                        password
+                                        image
                                     ) 
                                     values (
                                         '$txt_lname', 
@@ -113,7 +103,6 @@ if(isset($_POST['btn_add'])){
                                         '$txt_bdate', 
                                         '$txt_bplace',
                                         '$txt_age',
-                                        '$txt_brgy',
                                         '$txt_zone',
                                         '$txt_householdmem',
                                         '$txt_dperson',
@@ -129,20 +118,13 @@ if(isset($_POST['btn_add'])){
                                         '$txt_national',
                                         '$ddl_gender', 
                                         '$txt_skills', 
-                                        '$txt_igpit', 
-                                        '$txt_phno', 
                                         '$ddl_eattain', 
                                         '$ddl_hos',
                                         '$ddl_los', 
                                         '$ddl_dtype', 
-                                        '$txt_water', 
-                                        '$txt_lightning', 
-                                        '$txt_toilet', 
                                         '$txt_faddress', 
                                         '$txt_remarks', 
-                                        '$txt_image',
-                                        '$txt_uname', 
-                                        '$txt_upass'
+                                        '$txt_image'
                                     )"
                             ) 
                             or die('Error: ' . mysqli_error($con));
@@ -192,9 +174,7 @@ if(isset($_POST['btn_add'])){
                                         sanitaryToilet,
                                         formerAddress,
                                         remarks,
-                                        image,
-                                        username,
-                                        password
+                                        image
                                     ) 
                                     values (
                                         '$txt_lname', 
@@ -230,9 +210,7 @@ if(isset($_POST['btn_add'])){
                                         '$txt_toilet', 
                                         '$txt_faddress', 
                                         '$txt_remarks', 
-                                        '$txt_image',
-                                        '$txt_uname', 
-                                        '$txt_upass'
+                                        '$txt_image'
                                     )"
                             ) 
                             or die('Error: ' . mysqli_error($con));
@@ -256,6 +234,7 @@ if(isset($_POST['btn_add'])){
 
 if(isset($_POST['btn_save']))
 {
+    echo ' <script>console.log("yeah")</script>';
     $txt_id = $_POST['hidden_id'];
     $txt_edit_lname = $_POST['txt_edit_lname'];
     $txt_edit_fname = $_POST['txt_edit_fname'];
@@ -316,10 +295,14 @@ if(isset($_POST['btn_save']))
         $iquery = mysqli_query($con,"INSERT INTO tbllogs (user,logdate,action) values ('".$_SESSION['role']."', NOW(), '".$action."')");
     }
 
-$su = mysqli_query($con,"SELECT * from tblresident where username = '".$txt_edit_uname."' and id not in (".$txt_id.") ");
+// $su = mysqli_query($con,"SELECT * from tblresident where username = '".$txt_edit_uname."' and id not in (".$txt_id.") ");
+
+$su = mysqli_query($con,"SELECT * from tblresident where id = ".$txt_id );
 $ct = mysqli_num_rows($su);
 
 if($ct == 0){
+
+    echo ' <script>console.log("yeah")</script>';
 
     if($name != ""){
             if(($imagetype=="image/jpeg" || $imagetype=="image/png" || $imagetype=="image/bmp") && $size<=2048000){
@@ -420,10 +403,10 @@ if($ct == 0){
                                 ") or die('Error: ' . mysqli_error($con));
     }
         
-        if($update_query == true){
-            $_SESSION['edited'] = 1;
-            header("location: ".$_SERVER['REQUEST_URI']);
-        }
+    if($update_query == true){
+        $_SESSION['edited'] = 1;
+        header("location: ".$_SERVER['REQUEST_URI']);
+    }
 
     }
     else{

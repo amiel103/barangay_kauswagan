@@ -5,26 +5,26 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Manage Household</h4>
+                        <h4 class="modal-title">Add Household</h4>
                     </div>
                     <div class="modal-body">
                         
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Household #:</label>
-                                    <input onkeyup="show_head()" id="txt_householdno" name="txt_householdno" class="form-control input-sm" type="number" placeholder="Household #"/>
+                                    <label>Household No:</label>
+                                    <input onkeyup="show_head()" id="txt_householdno" name="txt_householdno" class="form-control input-sm" type="number" placeholder="Household No."/>
                                 </div>
                                 <div class="form-group">
                                     <label>Zone:</label>
-                                    <input name="txt_zone" class="form-control input-sm" type="text" placeholder="Zone #"/>
+                                    <input name="txt_zone" class="form-control input-sm" type="text" placeholder="Zone."/>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Head Of Family:</label>
 
                                     <select id="txt_hof" name="txt_hof" class="form-control input-sm select2" style="width:100%" onchange="show_total()">
-                                    <option disabled selected>-- Input Household # First --</option>
+                                    <option disabled selected>-- Input Household Number First --</option>
                                     
                                     </select>
                                 </div>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default btn-sm" data-dismiss="modal" value="Cancel"/>
-                        <input type="submit" class="btn btn-primary btn-sm" name="btn_add" value="Add Household"/>
+                        <input type="submit" class="btn btn-primary btn-sm" name="btn_add" value="Add"/>
                     </div>
                 </div>
               </div>

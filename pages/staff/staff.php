@@ -43,6 +43,9 @@
                                         
                                         <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addModal"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Staff</button>  
                                         <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button> 
+                                        <br>
+                                        <br>
+                                        <label id="error" class="label label-danger pull-left"></label> 
                                     </div>                                
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">

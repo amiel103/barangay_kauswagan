@@ -76,7 +76,7 @@
         <li><a href="about.php">About</a></li>
         <li><a href="../login.php">Admin</a></li>
         <li><a href="../pages/resident/login.php">Front Desk</a></li>
-        <li><a href="../pages/zone/login.php">Staff</a></li>
+        <li><a href="../pages/zone/login.php">Permit Admin</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -104,12 +104,12 @@
   <!-- End of Mission and Vision Container -->
 
   <!-- Facebook Icon Container -->
-  <div class="facebook-container">
+  <!-- <div class="facebook-container">
       <a href="https://www.facebook.com/groups/393397299829535" target="_blank" class="btn-facebook">
           <i class="fa fa-facebook"></i>
       </a>
       <span class="facebook-text">Join Us Here</span>
-  </div>
+  </div> -->
   <!-- End of Facebook Icon Container -->
 
 </div>

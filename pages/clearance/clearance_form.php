@@ -90,6 +90,14 @@
                                     <span style="font-size:12px;">Infrastracture / Labor Sector/ Environment / Beautification</span>
                                     </p>
                                     ';
+                                }else{
+                                    echo '
+                                    <p>
+                                    KAG. '.strtoupper($row['completeName']).'<br>
+                                    <span style="font-size:12px;">'.$row['sPosition'].'</span>
+                                    </p>
+                                    ';
+
                                 }
                             }
                         ?>
@@ -98,13 +106,14 @@
                 <div class="col-xs-7 col-sm-5 col-md-8" style="background: white;  ">
                     <div class="pull-left" style="font-size: 16px;"><b>
                         Republic of the Philippines<br>
-                        Municipality of Opol<br>
+                        Municipality of Cagayan de Oro<br>
                         Province of Misamis Oriental<br>
-                        BARANGAY IGPIT<br>
+                        BARANGAY KAUSWAGAN<br>
                         Tel. 999-0000<br></b>
                     </div>
                     <div class="pull-right" style="border: 2px solid black;">
-                       <?php $qry1=mysqli_query($con,"SELECT * from tblresident r left join tblclearance c on c.residentid = r.id where residentid = '".$_GET['resident']."' and clearanceNo = '".$_GET['clearance']."' ");
+                       <?php $qry1=mysqli_query($con,"SELECT * from tblresident r left join tblclearance2 c on c.ResidentId = r.id where residentid = '".$_GET['resident']."'");
+                    // <?php $qry1=mysqli_query($con,"SELECT * from tblresident r left join tblclearance c on c.residentid = r.id where residentid = '".$_GET['resident']."' and clearanceNo = '".$_GET['clearance']."' ");
                             while($row1 = mysqli_fetch_array($qry1)){
                         echo '<image src="../resident/image/'.basename($row1['image']).'" style="width:160px;height:160px;"/>';
                         }
@@ -113,13 +122,34 @@
                     <div class="col-xs-12 col-md-12">
                         <p class="text-center" style="font-size: 20px; font-size:bold;">OFFICE OF THE BARANGAY CAPTAIN<br><b style="font-size: 28px;">BARANGAY CLEARANCE</b></p>
                         <p style="font-size: 18px;">TO WHOM IT MAY CONCERN:</p>
-                        <p style="text-indent:40px;text-align: justify;">This is to certify that the person whose photo, signature and right thumb mark appear herein, is a resident of Barangay Igpit, Opol, Misamis Oriental and that the person had requested a criminal check from this office following is/are our findings.</p>
+                        <p style="text-indent:40px;text-align: justify;">This is to certify that the person whose photo, signature and right thumb mark appear herein, is a resident of Barangay Kauswagan, Cagayan de Oro, Misamis Oriental and that the person had requested a criminal check from this office following is/are our findings.</p>
+
+                        <!-- <script>
+                            console.log($_GET['resident'])
+                            console.log($_GET['clearance'])
+                        </script> -->
+                        <?php
+
+                            $res = $_GET['resident'];
+                            $cle = $_GET['clearance'];
+
+                            echo("
+                            <script>
+                                console.log(".$res.")
+                                console.log(".$cle.")
+                            </script>
+                            ")
+                        
+                        ?>
 
                         <?php
-                            $qry=mysqli_query($con,"SELECT * from tblresident r left join tblclearance c on c.residentid = r.id where residentid = '".$_GET['resident']."' and clearanceNo = '".$_GET['clearance']."' ");
+
+                   
+                        
+                            $qry=mysqli_query($con,"SELECT * from tblresident r left join tblclearance2 c on c.ResidentId = r.id where residentid = '".$_GET['resident']."'");
                             while($row = mysqli_fetch_array($qry)){
-                                $bdate = date_create($row['bdate']);
-                                $date = date_create($row['dateRecorded']);
+                                $bdate = date_create($row['Birthdate']);
+                                $date = date_create($row['dateCreated']);
                                 echo '
                                 <p><b>
                                     SURNAME: <u>'.strtoupper($row['lname']).'</u><br>
@@ -130,14 +160,13 @@
                                     GENDER/CIVIL STATUS: <u>'.strtoupper($row['gender']).'/SINGLE</u><br>
                                     NATIONALITY: <u>'.strtoupper($row['nationality']).'</u><br>
                                     RELIGION: <u>'.strtoupper($row['religion']).'</u><br>
-                                    PURPOSE: <u>'.strtoupper($row['purpose']).'</u><br>
+                                    PURPOSE: <u>'.strtoupper($row['Purpose']).'</u><br>
                                     FINDINGS: <u>NO DEROGATORY RECORD</u><br>
                                 </b></p>
                                 <p><b>
-                                    RES. CERT. NO.: <u>'.strtoupper($row['clearanceNo']).'</u><br>
+                                    RES. CERT. NO.: <u>'.strtoupper($row['id']).'</u><br>
                                     ISSUED ON: <u>'.strtoupper(date_format($date,"F j, o")).'</u><br>
-                                    ISSUED AT: <u>IGPIT OFFICE</u><br>
-                                    OR. NO.: <u>'.strtoupper($row['orNo']).'</u><br>
+                                    ISSUED AT: <u>KAUSWAGAN OFFICE</u><br>
                                     ISSUED ON: <u>'.strtoupper(date_format($date,"F j, o")).'</u><br>
                                 </b></p>
                                 ';

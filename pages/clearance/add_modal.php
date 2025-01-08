@@ -1,7 +1,7 @@
 <!-- ========================= MODAL ======================= -->
             <div id="addModal" class="modal fade">
             <form method="post">
-              <div class="modal-dialog modal-sm" style="width:300px !important;">
+              <div class="modal-dialog modal-sm" style="width:500px !important;">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -10,17 +10,14 @@
                     <div class="modal-body">
                         
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Clearance #:</label>
-                                    <input name="txt_cnum" class="form-control input-sm" type="number" placeholder="Clearance #"/>
-                                </div>
+                        <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Resident:</label>
                                     <select name="ddl_resident" class="select2 form-control input-sm" style="width:100%">
                                         <option selected="" disabled="">-- Select Resident -- </option>
                                         <?php
-                                            $squery = mysqli_query($con,"SELECT r.id,r.lname,r.fname,r.mname from tblresident r where ((r.id not in (select personToComplain from tblblotter)) or (r.id in (select personToComplain from tblblotter where sStatus = 'Solved')) ) and lengthofstay >= 6");
+                                            // $squery = mysqli_query($con,"SELECT r.id,r.lname,r.fname,r.mname from tblresident r where ((r.id not in (select personToComplain from tblblotter)) or (r.id in (select personToComplain from tblblotter where sStatus = 'Solved')) ) and lengthofstay >= 6");
+                                            $squery = mysqli_query($con,"SELECT * from tblresident ");
                                             while ($row = mysqli_fetch_array($squery)){
                                                 echo '
                                                     <option value="'.$row['id'].'">'.$row['lname'].', '.$row['fname'].' '.$row['mname'].'</option>    
@@ -29,22 +26,95 @@
                                         ?>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label>Findings:</label>
-                                    <input name="txt_findings" class="form-control input-sm" type="text" placeholder="Findings"/>
+                                
+                                <div>
+                                    <div class="form-group col-sm-6">
+                                        <label>Address:</label>
+                                        <input name="txt_address" class="form-control input-sm" type="text" />
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label>Birthdate</label>
+                                        <input name="txt_birthdate" class="form-control input-sm" type="date" />
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Purpose:</label>
-                                    <input name="txt_purpose" class="form-control input-sm" type="text" placeholder="Purpose"/>
+                            
+                                <div>
+                                    <div class="form-group col-sm-4">
+                                        <label>Age:</label>
+                                        <input name="txt_age" class="form-control input-sm" type="text" />
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label>Blood Type</label>
+                                        <input name="txt_bloodType" class="form-control input-sm" type="text" />
+                                    </div>
+
+                                    <div class="form-group col-sm-4">
+                                        <label>Contact #</label>
+                                        <input name="txt_contactNumber" class="form-control input-sm" type="text" />
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>OR Number:</label>
-                                    <input name="txt_ornum" class="form-control input-sm" type="number" placeholder="OR Number"/>
+
+                                <div>
+                                    <div class="form-group col-sm-3">
+                                        <label>Place of Birth</label>
+                                        <input name="txt_birthPlace" class="form-control input-sm" type="text" />
+                                    </div>
+                                    <div class="form-group col-sm-3">
+                                        <label>Civil Status</label>
+                                        <input name="txt_civilStatus" class="form-control input-sm" type="text" />
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label>No. Years in Kauswagan</label>
+                                        <input name="txt_years" class="form-control input-sm" type="text" />
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Amount:</label>
-                                    <input name="txt_amount" class="form-control input-sm" type="number" placeholder="Amount"/>
+
+                                <div>
+                                    <div class="form-group col-sm-4">
+                                        <label>Email Address</label>
+                                        <input name="txt_email" class="form-control input-sm" type="text" />
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label>For</label>
+                                        <select name="txt_for" class="form-control input-sm">
+                                            <option selected="" disabled="">-- Select -- </option>
+                                            <option value="Single">Barangay Clearance</option>
+                                            <option value="Married">Barangay Certificate</option>
+                                        </select> 
+                                    </div>  
+                                    <div class="form-group col-sm-4">
+                                        <label>Purpose</label>
+                                        <input name="txt_purpose" class="form-control input-sm" type="text" />
+                                    </div>
                                 </div>
+
+                                <div>
+                                <div>
+                                    
+                                    <div class="form-group col-sm-6">
+                                        <label>Others</label>
+                                        <input name="txt_others" class="form-control input-sm" type="text" />
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label>Remarks</label>
+                                        <input name="txt_remarks" class="form-control input-sm" type="text"/>
+                                    </div> 
+                                </div>
+
+                                <div> 
+                                    <div class="form-group col-sm-6">
+                                        <label>Indigency Approved by:</label>
+                                        <input name="txt_indigencyApproved" class="form-control input-sm" type="text"/>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label>Lupon Clerk Approval</label>
+                                        <input name="txt_luponApproved" class="form-control input-sm" type="text"/>
+                                    </div>
+                                </div>
+
+
+
+
                             </div>
                         </div>
                         

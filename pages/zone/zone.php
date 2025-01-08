@@ -50,6 +50,11 @@
                                         <?php
                                             }
                                         ?>
+
+
+                                        <br>
+                                        <br>
+                                        <label id="error" class="label label-danger pull-left"></label> 
                                 
                                     </div>                                
                                 </div><!-- /.box-header -->
@@ -67,7 +72,7 @@
                                                     }
                                                 ?>
                                                 <th>Zone</th>
-                                                <th>Userame</th>
+                                                <th>Username</th>
                                                 <th style="width: 40px !important;">Option</th>
                                             </tr>
                                         </thead>

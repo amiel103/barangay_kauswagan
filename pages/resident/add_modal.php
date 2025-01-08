@@ -5,7 +5,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Manage Residents</h4>
+                        <h4 class="modal-title">Add Resident</h4>
                     </div>
                     <div class="modal-body">
                         
@@ -37,13 +37,10 @@
                                     </div> -->
 
 
-                                    <div class="form-group">
-                                        <label class="control-label">Barangay:</label>
-                                        <input name="txt_brgy" class="form-control input-sm input-size" type="text" placeholder="Barangay"/>
-                                    </div>
+                                   
 
                                     <div class="form-group">
-                                        <label class="control-label">Household #:</label>
+                                        <label class="control-label">Household No:</label>
                                         <input name="txt_householdnum" class="form-control input-sm input-size" type="number" min="1" placeholder="Household #"/>
                                     </div>
 
@@ -74,11 +71,6 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label">IgpitID:</label>
-                                        <input name="txt_igpit" class="form-control input-sm input-size" type="number" placeholder="" min="1" />
-                                    </div>
-
-                                    <div class="form-group">
                                         <label class="control-label">Educational Attainment:</label>
                                         <select name="ddl_eattain" class="form-control input-sm input-size">
                                             <option>No schooling completed</option>
@@ -103,35 +95,20 @@
                                         </select>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="control-label">Water Usage:</label>
-                                        <select name="txt_water" class="form-control input-sm input-size">
-                                            <option>Faucet</option>
-                                            <option>Deep Well</option>
-                                        </select>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label class="control-label">Sanitary Toilet:</label>
-                                        <select name="txt_toilet" class="form-control input-sm input-size">
-                                            <option>Water-sealed</option>
-                                            <option>Antipolo</option>
-                                            <option>None</option>
-                                        </select>
-                                    </div>
-
-
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label class="control-label">Remarks:</label>
                                         <input name="txt_remarks" class="form-control input-sm input-size" type="text" placeholder="Remarks"/>
                                     </div>
-
+                                     -->
+                                    
                                     <div class="form-group">
-                                        <label class="control-label">Username:</label>
-                                        <input name="txt_uname" id="username" class="form-control input-sm input-size" type="text" placeholder="Username"/>
-                                        <label id="user_msg" style="color:#CC0000;" ></label>
+                                        <label class="control-label">Former Address:</label>
+                                        <input name="txt_faddress" class="form-control input-size" type="text" placeholder="Former Address"/>
                                     </div>
+
+
+
+        
 
                                 </div>
 
@@ -157,7 +134,7 @@
                                     </div> 
 
                                     <div class="form-group">
-                                        <label class="control-label">Zone #:</label>
+                                        <label class="control-label">Zone No:</label>
                                         <input name="txt_zone" class="form-control input-sm" type="text"  placeholder="Zone #"/>
                                     </div>
 
@@ -173,8 +150,29 @@
 
                                     <div class="form-group">
                                         <label class="control-label">Occupation:</label>
-                                        <input name="txt_occp" class="form-control input-sm" type="text" placeholder="Occupation"/>
+                                        <select name="txt_occp" class="form-control input-sm" type="text" placeholder="Occupation">
+
+                                            <option>Student</option>
+                                            <option>Employed</option>
+                                            <option>Unemployed</option>
+
+                                        </select>
                                     </div>
+
+                                    <!-- <div class="form-group">
+                                        <label class="control-label">Educational Attainment:</label>
+                                        <select name="ddl_eattain" class="form-control input-sm input-size">
+                                            <option>No Schooling Completed</option>
+                                            <option>Elementary</option>
+                                            <option>High School Undergrad</option>
+                                            <option>High School Graduate</option>
+                                            <option>College Undergrad</option>
+                                            <option>Vocational</option>
+                                            <option>Bachelor’s Degree</option>
+                                            <option>Master’s Degree</option>
+                                            <option>Doctorate Degree</option>
+                                        </select>
+                                    </div> -->
 
                                     <div class="form-group">
                                         <label class="control-label">Monthly Income:</label>
@@ -187,15 +185,7 @@
                                     </div>
 
 
-                                    <div class="form-group">
-                                        <label class="control-label">Skills:</label>
-                                        <input name="txt_skills" class="form-control input-sm" type="text" placeholder="Skills"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label">PhilHealth #:</label>
-                                        <input name="txt_phno" class="form-control input-sm" type="number" max="999999999999" min="1" placeholder="eg. 010000000001"/>
-                                    </div>
+                                    
 
                                     <div class="form-group">
                                         <label class="control-label">House Ownership Status:</label>
@@ -207,32 +197,11 @@
                                     </div>
 
 
-                                    <div class="form-group">
-                                        <label class="control-label">Dwelling Type:</label>
-                                        <select name="ddl_dtype" class="form-control input-sm">
-                                            <option value="1st Option">1st Option</option>
-                                            <option value="2nd Option">2nd Option</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label">Lightning Facilities:</label>
-                                        <select name="txt_lightning" class="form-control input-sm input-size">
-                                            <option>Electric</option>
-                                            <option>Lamp</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label">Former Address:</label>
-                                        <input name="txt_faddress" class="form-control input-sm" type="text" placeholder="Former Address"/>
-                                    </div>
+        
 
                                     
-                                    <div class="form-group">
-                                        <label class="control-label">Password:</label>
-                                        <input name="txt_upass" class="form-control input-sm" type="password" placeholder="Password"/>
-                                    </div>
+
+                                                                        
 
                                     <div class="form-group">
                                         <label class="control-label">Image:</label>
@@ -249,7 +218,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default btn-sm" data-dismiss="modal" value="Cancel"/>
-                        <input type="submit" class="btn btn-primary btn-sm" name="btn_add" id="btn_add" value="Add Resident"/>
+                        <input type="submit" class="btn btn-primary btn-sm" name="btn_add" id="btn_add" value="Add"/>
                     </div>
                 </div>
               </div>
