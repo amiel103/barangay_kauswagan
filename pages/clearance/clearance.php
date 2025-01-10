@@ -177,17 +177,7 @@
                                                             $nameq  = array("Unknow", "User");
                                                         }   
 
-                                                        // try {
-                                                            
-                                                        // //If the exception is thrown, this text will not be shown
-                                                        //     echo '<script> console.log("couint"'. count($nameq).')</script>';
-                                                        // }
-                                                        
-                                                        // //catch exception
-                                                        // catch(Exception $e) {
-                                                        //     echo 'Message: ' .$e->getMessage();
-                                                        // }
-                                                          
+                                                
 
                                                         
                                                         echo '

@@ -11,24 +11,24 @@
                         
                         <div class="row">
                             <div class="container-fluid">
-                                <div class="col-md-6 col-sm-12">
+                                <div class="col-md-6 col-sm-12"> 
 
                                     <div class="form-group">
                                         <label class="control-label" >Name:</label><br>
                                         <div class="col-sm-4">
-                                            <input name="txt_lname" class="form-control input-sm" type="text" placeholder="Lastname"/>
+                                            <input name="txt_lname" class="form-control input-sm" type="text" placeholder="Lastname" required/>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input name="txt_fname" class="form-control input-sm col-sm-4" type="text" placeholder="Firstname"/>
+                                            <input name="txt_fname" class="form-control input-sm col-sm-4" type="text" placeholder="Firstname" required/>
                                         </div>
                                         <div class="col-sm-4">
-                                            <input name="txt_mname" class="form-control input-sm col-sm-4" type="text" placeholder="Middlename"/>
+                                            <input name="txt_mname" class="form-control input-sm col-sm-4" type="text" placeholder="Middlename" required/>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">Birthdate:</label>
-                                        <input name="txt_bdate" class="form-control input-sm input-size" type="date" placeholder="Birthdate"/>
+                                        <input name="txt_bdate" class="form-control input-sm input-size" type="date" placeholder="Birthdate" required/>
                                     </div>
                                     <!--
                                     <div class="form-group">
@@ -41,33 +41,33 @@
 
                                     <div class="form-group">
                                         <label class="control-label">Household No:</label>
-                                        <input name="txt_householdnum" class="form-control input-sm input-size" type="number" min="1" placeholder="Household #"/>
+                                        <input name="txt_householdnum" class="form-control input-sm input-size" type="number" min="1" placeholder="Household #" required/>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">Differently-abled Person:</label>
-                                        <input name="txt_dperson" class="form-control input-sm input-size" type="text" placeholder="Differently-abled Person"/>
+                                        <input name="txt_dperson" class="form-control input-sm input-size" type="text" placeholder="Differently-abled Person" required/>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">Blood Type:</label>
-                                        <input name="txt_btype" class="form-control input-sm input-size" type="text" placeholder="Blood Type"/>
+                                        <input name="txt_btype" class="form-control input-sm input-size" type="text" placeholder="Blood Type"required />
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">Civil Status:</label>
-                                        <input name="txt_cstatus" class="form-control input-sm input-size" type="text" placeholder="Civil Status"/>
+                                        <input name="txt_cstatus" class="form-control input-sm input-size" type="text" placeholder="Civil Status" required/>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">Length of Stay: (in Months)</label><br>
-                                        <input name="txt_length" class="form-control input-sm input-size" type="number" min="0" placeholder="Length of Stay"/>
+                                        <input name="txt_length" class="form-control input-sm input-size" type="number" min="0" placeholder="Length of Stay" required/>
                                     </div>
 
 
                                     <div class="form-group">
                                         <label class="control-label">Religion:</label>
-                                        <input name="txt_religion" class="form-control input-sm input-size" type="text" placeholder="Religion"/>
+                                        <input name="txt_religion" class="form-control input-sm input-size" type="text" placeholder="Religion" required/>
                                     </div>
 
                                     <div class="form-group">
@@ -103,7 +103,7 @@
                                     
                                     <div class="form-group">
                                         <label class="control-label">Former Address:</label>
-                                        <input name="txt_faddress" class="form-control input-size" type="text" placeholder="Former Address"/>
+                                        <input name="txt_faddress" class="form-control input-size" type="text" placeholder="Former Address" required/>
                                     </div>
 
 
@@ -125,27 +125,27 @@
 
                                     <div class="form-group">
                                         <label class="control-label">Birthplace:</label>
-                                        <input name="txt_bplace" class="form-control input-sm" type="text" placeholder="Birthplace"/>
+                                        <input name="txt_bplace" class="form-control input-sm" type="text" placeholder="Birthplace" required/>
                                     </div> 
 
                                     <div class="form-group">
                                         <label class="control-label">Marital Status:</label>
-                                        <input name="txt_mstatus" class="form-control input-sm" type="text" placeholder="Marital Status"/>
+                                        <input name="txt_mstatus" class="form-control input-sm" type="text" placeholder="Marital Status" required/>
                                     </div> 
 
                                     <div class="form-group">
                                         <label class="control-label">Zone No:</label>
-                                        <input name="txt_zone" class="form-control input-sm" type="text"  placeholder="Zone #"/>
+                                        <input name="txt_zone" class="form-control input-sm" type="text"  placeholder="Zone #" required/>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">Total Household Member:</label>
-                                        <input name="txt_householdmem" class="form-control input-sm" type="number" min="1" placeholder="Total Household Member"/>
+                                        <input name="txt_householdmem" class="form-control input-sm" type="number" min="1" placeholder="Total Household Member" required/>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">Relationship to Head:</label>
-                                        <input name="txt_rthead" class="form-control input-sm" type="text" placeholder="Relationship to Head"/>
+                                        <input name="txt_rthead" class="form-control input-sm" type="text" placeholder="Relationship to Head" required/>
                                     </div>
 
                                     <div class="form-group">
@@ -176,12 +176,12 @@
 
                                     <div class="form-group">
                                         <label class="control-label">Monthly Income:</label>
-                                        <input name="txt_income" class="form-control input-sm" type="number" min="1" placeholder="Monthly Income"/>
+                                        <input name="txt_income" class="form-control input-sm" type="number" min="1" placeholder="Monthly Income" required/>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">Nationality:</label>
-                                        <input name="txt_national" class="form-control input-sm" type="text" placeholder="Nationality"/>
+                                        <input name="txt_national" class="form-control input-sm" type="text" placeholder="Nationality" required/>
                                     </div>
 
 
@@ -205,7 +205,7 @@
 
                                     <div class="form-group">
                                         <label class="control-label">Image:</label>
-                                        <input name="txt_image" class="form-control input-sm" type="file" />
+                                        <input name="txt_image" class="form-control input-sm" type="file" required/>
                                     </div>
 
 
